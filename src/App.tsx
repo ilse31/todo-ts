@@ -12,6 +12,8 @@ const App: React.FC = () => {
     if (todo.length > 0) {
       setTodos([...todos, { id: todos.length, todo, completed: false }]);
       setTodo("");
+    } else {
+      alert("Please enter a task");
     }
   };
 
