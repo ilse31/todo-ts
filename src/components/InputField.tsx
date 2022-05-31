@@ -11,10 +11,17 @@ const InputField: React.FC<Props> = ({
   setTodo,
   handleAddTodo,
 }: Props) => {
+  const inputRef = React.useRef<HTMLInputElement>(null);
   return (
-    <form className='input' onSubmit={handleAddTodo}>
+    <form
+      className='input'
+      onSubmit={(e) => {
+        handleAddTodo(e);
+        inputRef.current?.blur();
+      }}>
       <input
         type='text'
+        ref={inputRef}
         value={todo}
         onChange={(e) => setTodo(e.target.value)}
         placeholder='Enter a task'
